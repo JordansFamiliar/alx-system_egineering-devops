@@ -1,0 +1,2 @@
+#!/bin/bash
+cut -c1 /etc/ssh/sshd_config | grep -v '[0-9]'
