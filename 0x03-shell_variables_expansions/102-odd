@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -n '^[^\n]*$' | cut -d':' -f2
