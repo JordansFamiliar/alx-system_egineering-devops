@@ -7,6 +7,7 @@
 for i in *; do
     if [[ "$i" != .* ]]; then
 	name="${i##*/}"
-	echo "- $name"
+	name="${name#*-}"
+	echo "$name"
     fi
 done
