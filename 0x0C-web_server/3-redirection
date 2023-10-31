@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# This script installs and configures an Nginx web server.
+# It also starts the server, ensuring that it listens on port 80.
+
+# Update the package list to ensure we have the latest information.
+apt-get update
+
+# Install Nginx web server.
+apt-get -y install nginx
+
+# Allow incoming HTTP traffic through the firewall.
+sudo ufw allow 'Nginx HTTP'
+
+# Create a directory to host web content.
+mkdir -p /var/www/html/
+
+# Set appropriate permissions for the web directory.
+sudo chmod -R 755 /var/www
+
+# Create a basic "Hello World" HTML file as the default web page.
+echo 'Hello World!' > /var/www/html/index.html
+
+# Define the Nginx server configuration.
+SERVER_CONFIG=\
+"server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+    if (\$request_filename ~ redirect_me){
+        rewrite ^ https://sketchfab.com/bluepeno/models permanent;
+    }
+}"
+
+# Apply the server configuration by writing it to the Nginx default site.
+bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
+
+# Check if Nginx is running and start or restart it accordingly.
+if [ "$(pgrep -c nginx)" -le 0 ]; then
+    service nginx start
+else
+    service nginx restart
+fi
