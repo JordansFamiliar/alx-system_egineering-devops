@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Set the SSH server and private key file
 server="18.207.234.86"
 private_key="~/.ssh/school"
