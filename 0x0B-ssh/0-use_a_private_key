@@ -5,4 +5,4 @@ server="18.207.234.86"
 private_key="~/.ssh/school"
 
 # SSH into the server using the private key and user "ubuntu"
-ssh -o "StrictHostKeyChecking no" -i "$private_key" ubuntu@"$server"
+ssh -i "$private_key" ubuntu@"$server"
