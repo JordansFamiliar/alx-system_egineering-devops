@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Set the SSH server and private key file
 server="18.207.234.86"
-private_key="~/.ssh/school"
 
 # SSH into the server using the private key and user "ubuntu"
-ssh -i "$private_key" ubuntu@"$server"
+ssh -i ~/.ssh/school ubuntu@"$server"
