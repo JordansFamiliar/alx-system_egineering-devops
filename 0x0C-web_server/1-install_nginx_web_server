@@ -2,19 +2,8 @@
 # Description: Install Nginx web server and configure it to listen on port 80.
 # Update the package list to ensure we have the latest package information.
 sudo apt-get -y update
-
-# Install Nginx web server.
 sudo apt-get -y install nginx
-
-# Allow incoming HTTP traffic through the firewall for Nginx.
 sudo ufw allow "Nginx HTTP"
-
-# Change ownership of the default Nginx HTML file to the current user.
-# Replace $USER with your desired username if necessary.
 sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
-
-# Create a simple "Hello World!" index file for Nginx.
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-
-# Restart the Nginx service to apply the changes.
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
 sudo service nginx restart
