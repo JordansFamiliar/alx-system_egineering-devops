@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
 # Description: Install Nginx web server and configure it to listen on port 80.
-
 # Update the package list to ensure we have the latest package information.
 sudo apt-get -y update
 
