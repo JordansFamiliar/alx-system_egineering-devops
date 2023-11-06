@@ -14,7 +14,7 @@ sudo ufw allow "Nginx HTTP"
 sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
 
 # Create a simple "Hello World!" index file for Nginx.
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 # Restart the Nginx service to apply the changes.
 sudo service nginx restart
