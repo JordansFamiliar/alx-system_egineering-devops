@@ -24,8 +24,8 @@ HAPROXY_LB_CONFIG="server {
 }
 
 backend backend {
-    server 412834-web-01 18.207.234.86:80 check;
-    server 412834-web-02 54.175.224.162:80 check;
+    server 412834-web-01 52.87.222.90:80 check;
+    server 412834-web-02 100.26.240.19:80 check;
 }"
 
 # Create configuration files if they don't exist
