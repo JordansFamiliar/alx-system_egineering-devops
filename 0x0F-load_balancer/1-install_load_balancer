@@ -31,7 +31,7 @@ CONFIG_WORDS=$(grep -Eco "backend backend_servers" < $CONFIG_FILE)
 
 # Enable HAProxy if not already enabled
 if [ "$(grep -Eco '^ENABLED=[01]$' < $INIT_FILE)" -gt 0 ]; then
-    sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE" || true
+    sudo sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE"
 else
     echo 'ENABLED=1' >> $INIT_FILE
 fi
