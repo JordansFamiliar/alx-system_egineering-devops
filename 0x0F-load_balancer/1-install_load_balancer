@@ -47,7 +47,7 @@ else
     a=$((a - 1))
     b=$((b + 1))
     sed -i "$a,$b"d "$CONFIG_FILE"
-    echo -en "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
+    sudo echo -en "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
 fi
 
 # Start or restart the HAProxy service
