@@ -27,7 +27,7 @@ backend backend_servers
 [ -f "$CONFIG_FILE" ] || touch "$CONFIG_FILE"
 
 # Check if the configuration already exists in the file
-CONFIG_WORDS=$(grep -Eco "backend $DOMAIN_NAME-backend" < $CONFIG_FILE)
+CONFIG_WORDS=$(grep -Eco "backend backend_servers" < $CONFIG_FILE)
 
 # Enable HAProxy if not already enabled
 if [ "$(grep -Eco '^ENABLED=[01]$' < $INIT_FILE)" -gt 0 ]; then
