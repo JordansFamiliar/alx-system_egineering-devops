@@ -13,34 +13,28 @@ sudo apt-get -y install haproxy
 DOMAIN_NAME='codeblu.tech'
 INIT_FILE='/etc/default/haproxy'
 CONFIG_FILE='/etc/haproxy/haproxy.cfg'
-HAPROXY_LB_CONFIG="server {
-    listen 80;
-    server_name $DOMAIN_NAME;
+HAPROXY_LB_CONFIG="frontend http-in
+    bind *:80
+    default_backend backend_servers
 
-    location / {
-        proxy_pass http://backend;
-        add_header X-Served-By \$hostname;
-    }
-}
-
-backend backend {
-    server 412834-web-01 52.87.222.90:80 check;
-    server 412834-web-02 100.26.240.19:80 check;
-}"
+backend backend_servers
+    balance roundrobin
+    server server1 52.87.222.90:80 check
+    server server2 100.26.240.19:80 check"
 
 # Create configuration files if they don't exist
 [ -f "$INIT_FILE" ] || touch "$INIT_FILE"
 [ -f "$CONFIG_FILE" ] || touch "$CONFIG_FILE"
 
 # Check if the configuration already exists in the file
-CONFIG_WORDS=$(grep -Eco "$DOMAIN_NAME-backend" < $CONFIG_FILE)
+CONFIG_WORDS=$(grep -Eco "backend $DOMAIN_NAME-backend" < $CONFIG_FILE)
 
 # Enable HAProxy if not already enabled
 if [ "$(grep -Eco '^ENABLED=[01]$' < $INIT_FILE)" -gt 0 ]; then
     sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE"
-    else
-        echo 'ENABLED=1' >> $INIT_FILE
-	fi
+else
+    echo 'ENABLED=1' >> $INIT_FILE
+fi
 
 # Add or update HAProxy configuration in the file
 if [ "$CONFIG_WORDS" -eq 0 ]; then
