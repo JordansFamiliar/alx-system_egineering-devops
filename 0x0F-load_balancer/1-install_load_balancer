@@ -46,8 +46,8 @@ else
     b=$(grep -onE "$end_tkn" < "$CONFIG_FILE" | cut -d : -f1)
     a=$((a - 1))
     b=$((b + 1))
-    sed -i "$a,$b"d "$CONFIG_FILE"
-    sudo echo -en "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
+    sudo sed -i "$a,$b"d "$CONFIG_FILE"
+    echo -en "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
 fi
 
 # Start or restart the HAProxy service
