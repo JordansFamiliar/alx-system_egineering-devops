@@ -38,7 +38,7 @@ fi
 
 # Add or update HAProxy configuration in the file
 if [ "$CONFIG_WORDS" -eq 0 ]; then
-    echo -e "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
+    echo -e "$HAPROXY_LB_CONFIG" > $CONFIG_FILE
 else
     start_tkn="#--$DOMAIN_NAME-params-begin--"
     end_tkn="#--$DOMAIN_NAME-params-end--"
@@ -47,7 +47,7 @@ else
     a=$((a - 1))
     b=$((b + 1))
     sudo sed -i "$a,$b"d "$CONFIG_FILE"
-    echo -en "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
+    echo -en "$HAPROXY_LB_CONFIG" > $CONFIG_FILE
 fi
 
 # Start or restart the HAProxy service
