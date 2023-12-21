@@ -49,7 +49,7 @@ echo "$new_config" > /etc/nginx/sites-available/default
 
 # Check if Nginx is running and start or restart it accordingly.
 if [ -z "$(pgrep nginx)" ]; then
-    service nginx start
+    sudo service nginx start
 else
-    service nginx restart
+    sudo service nginx restart
 fi
