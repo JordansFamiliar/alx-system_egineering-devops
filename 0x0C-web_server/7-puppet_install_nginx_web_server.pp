@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Configure Nginx for a custom 404 page and start the server.
 
+# Install ufw
+sudo apt-get install ufw
+
 # Update the package list to ensure we have the latest information.
 sudo apt-get update
 
@@ -45,7 +48,7 @@ echo "Ceci n'est pas une page" > /var/www/html/404.html
 echo "$new_config" > /etc/nginx/sites-available/default
 
 # Check if Nginx is running and start or restart it accordingly.
-if [ "$(pgrep nginx)" -le 0 ]; then
+if [ -z "$(pgrep nginx)" ]; then
     service nginx start
 else
     service nginx restart
