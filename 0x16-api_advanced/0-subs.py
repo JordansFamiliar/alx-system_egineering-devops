@@ -18,7 +18,7 @@ def number_of_subscribers(subreddit):
 
     if response.status_code == 404:
         # Subreddit not found
-        return 0
+        return 'OK'
     elif response.status_code != 200:
         # Other error (e.g., rate limit, server error)
         return 0
@@ -29,7 +29,7 @@ def number_of_subscribers(subreddit):
 
         # Check if 'data' key is present and has 'subscribers' key
         if 'data' in data and 'subscribers' in data['data']:
-            return data['data']['subscribers']
+            return 'OK'
         else:
             return 0
 
