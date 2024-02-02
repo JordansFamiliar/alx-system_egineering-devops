@@ -1,0 +1,17 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  iproute2 libatm1 libmnl0 libnginx-mod-http-image-filter
+  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
+  libxslt1.1 libxtables12 nginx-common nginx-core
+Suggested packages:
+  iproute2-doc fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  iproute2 libatm1 libmnl0 libnginx-mod-http-image-filter
+  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
+  libxslt1.1 libxtables12 nginx nginx-common nginx-core
+0 upgraded, 12 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,675 kB of archives.
+After this operation, 5,703 kB of additional disk space will be used.
+Do you want to continue? [Y/n] 
